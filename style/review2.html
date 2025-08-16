@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Custom Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #ddd;
+      outline: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    input[type="range"]:focus {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    input[type="range"]:hover {
+      background-color: #ccc;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background-color: #007bff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    input[type="range"]:active::-webkit-slider-thumb {
+      background-color: #0056b3;
+      transform: scale(1.2);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background-color: #007bff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    input[type="range"]:active::-moz-range-thumb {
+      background-color: #0056b3;
+      transform: scale(1.2);
+    }
+
+    .slider-value {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #333;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 0.3s forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+    }
+
+    .slider-mark {
+      position: absolute;
+      top: 10px;
+      color: #333;
+      font-size: 12px;
+      opacity: 0;
+      animation: fadeInMarks 1s ease-in-out forwards;
+    }
+
+    .slider-mark[data-index="0"] { left: 0%; animation-delay: 0.1s; }
+    .slider-mark[data-index="1"] { left: 11.11%; animation-delay: 0.2s; }
+    .slider-mark[data-index="2"] { left: 22.22%; animation-delay: 0.3s; }
+    .slider-mark[data-index="3"] { left: 33.33%; animation-delay: 0.4s; }
+    .slider-mark[data-index="4"] { left: 44.44%; animation-delay: 0.5s; }
+    .slider-mark[data-index="5"] { left: 55.56%; animation-delay: 0.6s; }
+    .slider-mark[data-index="6"] { left: 66.67%; animation-delay: 0.7s; }
+    .slider-mark[data-index="7"] { left: 77.78%; animation-delay: 0.8s; }
+    .slider-mark[data-index="8"] { left: 88.89%; animation-delay: 0.9s; }
+    .slider-mark[data-index="9"] { left: 100%; animation-delay: 1s; }
+
+    @keyframes fadeInMarks {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Add labels for Hardness and Softness */
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #333;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeInLabels 1.5s ease-in-out forwards;
+    }
+
+    .slider-labels span {
+      font-weight: bold;
+    }
+
+    @keyframes fadeInLabels {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider-container">
+  <input type="range" id="slider" min="1" max="10" step="1" value="5">
+  <div class="slider-value" id="sliderValue">5</div>
+
+  <div class="slider-mark" data-index="0">1</div>
+  <div class="slider-mark" data-index="1">2</div>
+  <div class="slider-mark" data-index="2">3</div>
+  <div class="slider-mark" data-index="3">4</div>
+  <div class="slider-mark" data-index="4">5</div>
+  <div class="slider-mark" data-index="5">6</div>
+  <div class="slider-mark" data-index="6">7</div>
+  <div class="slider-mark" data-index="7">8</div>
+  <div class="slider-mark" data-index="8">9</div>
+  <div class="slider-mark" data-index="9">10</div>
+
+  <div class="slider-labels">
+    <span>Hardness</span>
+    <span>Softness</span>
+  </div>
+</div>
+
+<script>
+  const slider = document.getElementById("slider");
+  const sliderValue = document.getElementById("sliderValue");
+
+  // Update the displayed value as the slider is moved
+  slider.addEventListener("input", function() {
+    sliderValue.textContent = slider.value;
+    const sliderWidth = slider.offsetWidth;
+    const valuePercent = (slider.value - slider.min) / (slider.max - slider.min);
+    const thumbPosition = valuePercent * sliderWidth;
+    sliderValue.style.left = `calc(${thumbPosition}px - 10px)`; // Center the value above the thumb
+  });
+
+  // Initialize the value display on page load
+  slider.dispatchEvent(new Event("input"));
+</script>
+
+</body>
+</html>
+
+<style>
+  .navbar .logo {
+    font-size: 24px;
+    color: #d4af37; /* Luxury Gold */
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  header {
+    background-color: #0d0d0d; /* Deep Onyx Black */
+  
+    font-family: 'Poppins', sans-serif; /* Modern Premium Font */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+      padding: 40px 0;
+      font-family: 'Lato', sans-serif; /* Clean & Modern */
+    color: rgb(240, 240, 240); /* Light Silver for text */
+    line-height: 1.6;
+    background-color: rgb(40, 40, 50); /* Dark background */
+    margin: 0;
+    padding: 0;
+    }
+    
+    header .navbar {
+      padding: 0;
+      margin-right: 270px;
+    }
+    
+    .bg-dark {
+      --bs-bg-opacity: 1;
+      background-color:  white  !important;
+      
+    }
+   
+    
+    /* Navbar Links Styling */
+    header .navbar-nav .nav-item .nav-link {
+      color:black !important;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 10px 35pxpx;
+      transition: color 0.3s ease, transform 0.3s ease;
+      
+    }
+   
+    .nav-item.dropdown{
+      text-decoration-color: purple;
+    }
+    .nav-item:hover{
+      background-color: rgb(142, 56, 142);
+      border-radius: 5px;
+    }
+  
+    header .navbar-nav .nav-item .nav-link:hover {
+      color: #FFD700; /* Gold color on hover */
+      transform: scale(1.1);
+    }
+    
+    header .navbar-nav .nav-item .nav-link.active {
+      color: #ffd900 !important; /* Active link color */
+    }
+    
+    header .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
+      color:wheat;
+    }
+    
+    /* Dropdown Menu Styling */
+    header .navbar-nav .nav-item .dropdown-menu {
+      background-color: white;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    header .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+      color: black;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+    }
+    
+    header .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+      background-color:rgb(142, 56, 142);;
+      color: black;
+    }
+    
+    /* Close Button for Mobile Navbar */
+    .navbar-collapse .close-btn {
+      position: absolute;
+      top: 20px;
+      right:-100000px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      display: block;
+      }
+    /* Mobile View - Navbar Collapse Styles */
+    /* Mobile View - Navbar Collapse Styles */
+   /* Mobile View - Navbar Collapse Styles */
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 300px;  /* Sidebar width */
+      background-color: white;  /* Dark background */
+      z-index: 1050;
+      transform: translateX(-100%);  /* Hidden by default */
+      transition: transform 0.5s ease;
+      padding: 1rem;
+      padding-top: 50px;
+    }
+  
+    /* When the menu is opened (visible) */
+    .navbar-collapse.show {
+      transform: translateX(0);  /* Slide-in effect */
+    }
+  
+    .navbar-collapse.hide {
+      transform: translateX(-100%);  /* Slide-out effect */
+    }
+  
+    /* Adjust navbar items for mobile */
+    .navbar-nav .nav-item {
+      margin-bottom: 15px;  /* Space between navbar items */
+    }
+  
+    .navbar-nav .nav-item .nav-link {
+      padding: 10px 15px;
+      font-size: 1.2rem;
+      color: white;
+    }
+  
+    /* Adjust logo size for mobile */
+    .navbar-brand img {
+      height: 40px;
+      width: 40px;
+    }
+  
+    /* Close button (X) for mobile navbar */
+    .navbar-collapse .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: none;
+      color: black;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  
+  
+    .navbar-toggler {
+      border: none; /* Remove border around the button */
+      padding: 0;   /* Remove extra padding */
+      background: transparent; /* Make the button background transparent */
+      margin-right: a;
+      margin-left: 10px;
+      overflow: hidden;
+      position: absolute;
+      margin-top: 23px;
+      
+    }
+    
+    .navbar-toggler-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px; /* Width of the toggler icon */
+      height: 22px; /* Height to space out the strips properly */
+    }
+    
+    .navbar-toggler-icon div {
+      width: 100%; /* Full width for all strips */
+      height: 3px; /* Thickness of each strip */
+      background-color: black; /* Black color for the strips */
+      border-radius: 2px; /* Roun
+      ded edges for a professional look */
+    }
+    
+    
+  }
+  
+  
+  /* Desktop View */
+  @media (min-width: 992px) {
+    .navbar-collapse {
+      position: static;
+      width: auto;
+      background-color: transparent;
+      transform: none;
+    }
+  
+    /* Desktop navbar items */
+    .navbar-nav .nav-item .nav-link {
+      padding: 15px 20px;
+      text-align: left;
+    }
+  
+    /* Hide navbar toggler on desktop */
+    .navbar-toggler {
+      display: none;
+    }
+  
+    /* Make brand logo larger on desktop */
+    .navbar-brand img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Global Keyframes for Animation */
+  @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+  }
+  
+  @keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+  }
+  
+  @keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+  }
+  
+  @keyframes slideInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* Slide-in for navbar */
+  @keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slideOutLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100%); opacity: 0; }
+  }
+  
+  /* Default styling for larger screens */
+  .navbar-brand img {
+    height: 50px; /* Default height for the logo */
+    width: auto; /* Maintain aspect ratio */
+    padding: 0; /* Remove unnecessary padding */
+    margin-left: px; /* Add spacing from the navbar edge if needed */
+    transition: all 0.3s ease; /* Smooth scaling effect */
+    
+  }
+  @media (max-width: 992px) {
+    .navbar-brand img {
+      height: 50px; /* Default height for the logo */
+      width: auto; /* Maintain aspect ratio */
+      padding: 0; /* Remove unnecessary padding */
+      margin-left: 300px; /* Add spacing from the navbar edge if needed */
+      transition: all 0.3s ease; /* Smooth scaling effect */
+      
+    }
+  }
+  /* Media query for tablets and smaller devices (max-width: 768px) */
+  @media (max-width: 768px) {
+    .navbar-brand img {
+        height: 40px; /* Reduce logo size for tablets */
+        margin-left: 200px; /* Adjust spacing */
+    }
+  }
+  
+  /* Media query for mobile devices (max-width: 576px) */
+  @media (max-width: 576px) {
+    .navbar-brand img {
+        height: 35px; /* Further reduce logo size for small screens */
+        margin: 0 auto; /* Center the logo if needed */
+        display: block; /* Ensure it's properly displayed */
+        margin-left: 200px;
+    }
+    @media (max-width: 515px) {
+      .navbar-brand img {
+          height: 35px; /* Further reduce logo size for small screens */
+          margin: 0 auto; /* Center the logo if needed */
+          display: block; /* Ensure it's properly displayed */
+          margin-left: 160px;
+      }
+  }
+    @media (max-width: 415px) {
+      .navbar-brand img {
+          height: 35px; /* Further reduce logo size for small screens */
+          margin: 0 auto; /* Center the logo if needed */
+          display: block; /* Ensure it's properly displayed */
+          margin-left: 130px;
+      }
+  }
+  }
+  /* CSS for WhatsApp icon to adjust responsiveness */
+  .navbar-items3 i {
+    font-size: 48px;
+    color: red;
+    transition: font-size 0.3s ease;
+    
+    
+   
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-items3 i {
+        font-size: 36px;  /* Adjust for tablets and mobile devices */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar-items3 i {
+        font-size: 30px;  /* Further reduce size for small screens */
+    }
+  }
+  
+</style>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover premium mattresses from Samrat Mattress for unparalleled comfort.">
+    <meta name="keywords" content="mattress, premium, comfort, memory foam, pillow top, hybrid, luxury">
+    <meta name="author" content="Samrat Mattress">
+    <meta property="og:image" content="images/hero-bg.jpg">
+    <meta property="og:description" content="Explore luxury mattresses for the best sleep experience.">
+    <meta property="og:title" content="Samrat Mattress - Home">
+    <meta property="og:type" content="website">
+    <title>Samrat Mattress - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samrat Mattress - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+   <meta name="description" content="Discover premium mattresses from Samrat Mattress for unparalleled comfort.">
+<meta property="og:image" content="path_to_image.jpg">
+<meta property="og:description" content="Explore luxury mattresses for the best sleep experience.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <link rel="stylesheet" href="nav.css">
+    <script src="script.js" defer></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  // Initialize Swiper
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,  // Adjust the number of slides visible at once
+    spaceBetween: 30,   // Adjust the space between slides (set to 30px here)
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 2500,       // Set autoplay delay in milliseconds
+      disableOnInteraction: false,
+    },
+    effect: 'fade',     // Apply fade effect between slides (you can change to 'slide' or other effects)
+  });
+  
+  document.getElementById('review-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form values
+    const stars = document.getElementById('stars').value;
+    const title = document.getElementById('title').value;
+    const comment = document.getElementById('comment').value;
+    const name = document.getElementById('name').value;
+
+    // Create a review object
+    const review = {
+      stars: parseInt(stars),
+      title,
+      comment,
+      name
+    };
+
+    // Fetch existing reviews from localStorage or create an empty array
+    const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+
+    // Add the new review to the array
+    testimonials.push(review);
+
+    // Save the updated reviews to localStorage
+    localStorage.setItem('testimonials', JSON.stringify(testimonials));
+
+    // Redirect back to home page to see updated testimonials
+    window.location.href = "index.html";
+  });
+</script>
+</head>
+<body>
+    <header class="bg-dark text-white p-3" >
+        <nav class="container" >
+            <div class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="index.html">Samrat Mattress</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <button class="close-btn" onclick="closeNavbar()"></button>
+                        <li class="nav-item"><a href="index.html" class="nav-link text-white">Home</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link text-white">About Us</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="products.html" class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mattress
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="memory-foam.html">Memory Foam Mattress</a></li>
+                                <li><a class="dropdown-item" href="latex.html">Latex Mattress</a></li>
+                                <li><a class="dropdown-item" href="orthopedic.html">Spring Mattress</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="products.html" class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">bed Accessories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="memory-foam.html">Toppers</a></li>
+                                <li><a class="dropdown-item" href="latex.html">Protectors</a></li>
+                                <li><a class="dropdown-item" href="orthopedic.html">Spring</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link text-white">Contact</a></li>
+                        <li class="nav-item"><a href="login.html" class="nav-link text-white">Claim Warranty</a></li>
+                        <li class="nav-item"><a href="login.html" class="nav-link text-white">blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+    <div class="container1">
+        <section class="product-section">
+            <div class="product-images">
+                <div class="slider-images">
+                    <img src="image/tr.jpg" alt="Backrest Mattress" class="active" id="image1">
+                    <img src="image/te.jpg" alt="Image 1" id="image2">
+                    <img src="image/ty.jpg" alt="Image 2" id="image3">
+                    <div class="arrow-buttons">
+                        <button id="prev-btn" class="arrow-btn">&#8592;</button> <!-- Left Arrow -->
+                        <button id="next-btn" class="arrow-btn">&#8594;</button> <!-- Right Arrow -->
+                    </div>
+                </div>
+                
+                <div class="image-thumbnails">
+                    <img src="image/tr.jpg" alt="Thumbnail 1" onclick="changeImage(0)">
+                    <img src="image/te.jpg" alt="Thumbnail 2" onclick="changeImage(1)">
+                    <img src="image/ty.jpg" alt="Thumbnail 3" onclick="changeImage(2)">
+                </div>
+            </div>
+
+            <div class="product-details">
+                <h2><b>Sandwich Mattress</b></h2>
+                <p>A sandwich mattress combines multiple layers of premium materials, offering a balance of support and comfort for a restful sleep experience. Designed to promote spinal alignment, it provides excellent pressure relief and durability, making it an ideal choice for long-lasting comfort.</p>
+                <h3>Product Features:</h3>
+                <ul>
+                <li>Excellent Support for Proper Spinal Alignment</li>
+                <li>Comfort Level - Medium Firm</li>
+                <li>Dual-Sided Quilting for Enhanced Comfort</li>
+                <li>Comprehensive Warranty</li>
+                <li>Made with Natural Latex or Latex Feel Foam</li>
+                <li>Eco-Friendly and Sustainable Materials</li>
+                <li>Single-Sided Usable with Pillow and Euro Top</li>
+                </ul>
+
+                <h3>Choose Comfort Level:</h3>
+                <select>
+                    <option value="medium-firm">Medium Firm</option>
+                    <option value="soft">Soft</option>
+                    <option value="firm">Firm</option>
+                </select>
+                <h3>Base Layer:</h3>
+                <select>
+                    <option value="medium-firm">Medium Firm</option>
+                    <option value="soft">Soft</option>
+                    <option value="firm">Firm</option>
+                </select>
+                <h3>Choose Your Dimension:</h3>
+                <select>
+                    <option value="72x30">72'' × 30''</option>
+                    <option value="75x30">75'' × 30''</option>
+                    <option value="72x36">72'' × 36''</option>
+                    <option value="75x36">75'' × 36''</option>
+                </select>
+                <h3>Choose Your Thickness:</h3>
+                <select>
+                    <option value="2">2 inch</option>
+                    <option value="4">4 inch</option>
+                    <option value="6">6 inch</option>
+                    <option value="8">8 inch</option>
+                </select>
+
+                <button class="buy-now-btn" onclick="startWhatsAppChat()">Buy Now</button>
+
+
+            </div>
+        </section>
+    </div>
+</section>
+<footer class="text-center">
+    <p>&copy; 2025 Samrat Mattress. All rights reserved.</p>
+</footer>
+    <script>
+        const thumbnails = document.querySelectorAll('.image-thumbnails img');
+        const images = document.querySelectorAll('.slider-images img');
+
+        function changeImage(index) {
+            images.forEach((img, i) => img.classList.toggle('active', i === index));
+        }
+
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => changeImage(index));
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll(".slider-images img");
+            const prevBtn = document.getElementById("prev-btn");
+            const nextBtn = document.getElementById("next-btn");
+            let currentIndex = 0;
+        
+            function updateActiveImage(index) {
+                images.forEach((img, i) => {
+                    img.classList.toggle("active", i === index);
+                });
+            }
+        
+            prevBtn.addEventListener("click", () => {
+                currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+                updateActiveImage(currentIndex);
+            });
+        
+            nextBtn.addEventListener("click", () => {
+                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                updateActiveImage(currentIndex);
+            });
+        
+            // Initialize the first image as active
+            updateActiveImage(currentIndex);
+        });
+        
+    </script>
+   
+    <script>
+        function startWhatsAppChat() {
+          const phoneNumber = '919131938554'; // Your WhatsApp number in international format (omit + and -)
+          const message = `Hello, I am interested in purchasing the following item:\n\n` ;
+          const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+          window.open(url, '_blank');
+        }
+        </script>
+        
+          
+    <
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+   
+    <style>
+        .container1 {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: auto; 
+            margin-top: -10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            
+        }
+        
+                .product-section {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 0px;
+                   
+                    margin-right: 10px;
+                    margin-top: 20px;
+                    position: static;
+                }
+                
+                .product-images {
+                    width: 40;
+                    text-align: center;
+                    margin-left: 10px;
+                    margin-top: 1px;
+                    margin-right: 100px;
+                    
+        
+                }
+                
+                .slider-images img {
+                    max-width: 100%;
+                    height: 400px;
+                    object-fit: cover;
+                    border: 2px solid #ddd;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    display: none;
+                    gap:0px;
+                    margin-top: 1px;
+                }
+                
+                .slider-images img.active {
+                    display: block;
+                }
+                
+                .image-thumbnails {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 10px;
+                    margin-right: 50px;
+                }
+                
+                .image-thumbnails img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    cursor: pointer;
+                    border: 2px solid transparent;
+                    border-radius: 5px;
+        
+                }
+                
+                .image-thumbnails img:hover {
+                    border-color: #3498db;
+                }
+                
+                .product-details {
+                    width: 50%;
+                    max-width: 400px;
+                    text-align: left;
+                    margin-left:10px ;
+                    font-size: 18px;
+                }
+                .product-details li{
+                    text-align: left;
+                    font-size: 18px;
+
+                }
+                .product-details h2{
+                    margin-bottom: 20px;
+                    margin-right: 30px;
+                    color:rgb(133, 6, 133) ;
+                }
+                .product-details h3{
+                    margin-bottom: 20px;
+                    margin-right: 30px;
+                    color:rgb(133, 6, 133) ;
+                }
+                
+                select {
+                    width: 100%;
+                    padding: 10px;
+                    margin: 10px 0;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    font-size: 20px;
+                    margin-bottom: 30px;
+                   
+                }
+                
+                /* Responsive Styles for Mobile */
+                @media (max-width: 768px) {
+                    .container1 {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Arial, sans-serif;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 20px;
+                        margin: auto; 
+                        margin-top: 1px;
+                        margin-bottom: 100px;
+                        
+                    }
+                    .product-section {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                        margin: 0;
+        
+                    }
+                
+                    .product-images {
+                        width: 100%;
+                        margin: 0;
+                        margin-top: 3px;
+                        
+                    }
+                
+                    .product-details {
+                        width: 100%;
+                        margin-top: 20px;
+                        margin-left: 10px;
+                        font-size: 20px;
+                    }
+                    
+                    .product-details select {
+                        font-size: 20px;
+                        margin-bottom: 40px;
+                    }
+                    .product-details h3 ,h2{
+                        font-size: 26px;
+                        margin-bottom: 30px;
+                    }
+                
+                    .slider-images img {
+                        height: auto;
+                        margin-left: 1px;
+                    }
+                
+                    .image-thumbnails img {
+                        width: 60px;
+                        height: 60px;
+                        margin-left: 20px;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .product-section {
+                        gap: 15px;
+                    }
+                
+                    .product-images {
+                        margin: 0;
+                    }
+                
+                    .slider-images img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                
+                    .image-thumbnails img {
+                        width: 50px;
+                        height: 50px;
+                    }
+                
+                    select {
+                        font-size: 14px;
+                        padding: 8px;
+                    }
+                
+                .arrow-buttons {
+            position: relative;
+            top: -200px; /* Adjust based on your slider height */
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .arrow-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .arrow-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .slider-images {
+            position: relative;
+        }
+        }
+        .arrow-buttons {
+            position: absolute;
+            top: 50%; /* Center vertically relative to the image */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%); /* Perfect vertical alignment */
+            pointer-events: none; /* Prevent pointer events on the container itself */
+            z-index: 10; /* Ensure it's above the images */
+        }
+        
+        .arrow-btn {
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto; /* Enable clicks on the buttons */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .arrow-btn:hover {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker on hover */
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+        
+        .slider-images {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .slider-images img {
+            width: 100%; /* Ensure images fill the slider area */
+            max-height: 500px; /* Adjust to match your desired image size */
+            /* Ensure the image is fully visible without cropping */
+        }
+        .slider-images img {
+            display: none; /* Hide all images by default */
+        }
+        
+        .slider-images img.active {
+            display: block; /* Show only the active image */
+        }
+        
+        
+        
+        
+        .buy-now-btn {
+            /* Basic Styling */
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+          
+            /* Responsive Design */
+            width: auto;
+            max-width: 100%;
+            margin: 10px;
+
+            margin-left: 125px;
+            margin-top: 30px;
+          }
+          
+          .buy-now-btn:hover {
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+          }
+          
+          .buy-now-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+          
+          /* Responsive Media Queries */
+          @media (max-width: 768px) {
+            .buy-now-btn {
+              font-size: 16px;
+              padding: 10px 20px;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .buy-now-btn {
+              font-size: 14px;
+              padding: 8px 16px;
+            }
+          }
+          
+        
+        
+        
+    </style>
+</body>
+</html>

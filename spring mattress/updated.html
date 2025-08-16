@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header class="bg-dark text-white p-3">
+        <nav class="container">
+            <div class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="index.html">
+                    <!-- You can add a logo or brand name here -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <button class="close-btn" onclick="closeNavbar()"></button>
+                        <li class="nav-item"><a href="index.html" class="nav-link text-white">Home</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link text-white">About Us</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="product.html" class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mattress</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="product.html">All Mattress</a></li>
+                                <li><a class="dropdown-item" href="Memory-Foam.html">Memory Foam Mattress</a></li>
+                                <li><a class="dropdown-item" href="latex.html">Latex Mattress</a></li>
+                                <li><a class="dropdown-item" href="spring .html">Spring Mattress</a></li>
+                                <li><a class="dropdown-item" href="coir.html">Coir Mattress</a></li>
+                                <li><a class="dropdown-item" href="sandwich.html">Sandwich Mattress</a></li>
+                                <li><a class="dropdown-item" href="Bonded.html">Bonded Mattress</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="products.html" class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Bed Accessories</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="memory-foam.html">Toppers</a></li>
+                                <li><a class="dropdown-item" href="latex.html">Protectors</a></li>
+                                <li><a class="dropdown-item" href="orthopedic.html">Spring</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link text-white">Contact</a></li>
+                        <li class="nav-item"><a href="login.html" class="nav-link text-white">Claim Warranty</a></li>
+                        <li class="nav-item"><a href="login.html" class="nav-link text-white">Blogs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    
+</body>
+<style>/* Base Navbar Styles */
+    /* Navbar Container Styling */
+.header {
+    background-color: rgb(107, 4, 122); /* Purple background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease-in-out;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    width: 100%;
+    padding: 0 20px;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center; /* Ensures the items are centered */
+    align-items: center;
+    padding-left: 0;
+    margin-left: 0;
+    list-style: none;
+}
+
+.nav-item {
+    margin: 0 20px; /* Adjusts spacing between items */
+    position: relative;
+}
+
+/* Navbar Link Styling */
+.nav-link {
+    color: white !important;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Navbar Item Hover Effects */
+.nav-link:hover {
+    color: #f8f9fa !important;
+    transform: scale(1.1); /* Slightly enlarges text for hover */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Dropdown Menu Styles */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(107, 4, 122);
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    padding: 0;
+    list-style: none;
+}
+
+.dropdown-item {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+    position: relative;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+
+/* Navbar Collapse (for Mobile) */
+.navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1050;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    padding: 1rem;
+}
+
+.navbar-collapse.show {
+    transform: translateX(0);
+}
+
+/* Cross Button Styling (Close Button) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 991px) {
+    .navbar-nav {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-toggler-icon {
+        background-color: white;
+    }
+
+    .navbar-collapse {
+        width: 80%;
+        padding-top: 60px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: block;
+        transform: none;
+    }
+
+    .navbar-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+/* Keyframes for Sliding Animation */
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+    </style>
+</html>
+
+    

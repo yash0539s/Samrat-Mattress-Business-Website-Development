@@ -1,0 +1,204 @@
+.hero {
+    position: relative;
+    background-image: url('path_to_your_banner_image.jpg'); /* Set your banner image here */
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center center; /* Center the image */
+    background-attachment: fixed; /* Fixed background for parallax effect */
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+    padding: 10rem 0;
+    height: 100vh; /* Ensure full viewport height for hero section */
+    overflow: hidden;
+}
+
+.hero .container {
+    z-index: 3; /* Ensures text is visible above images */
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3rem; /* Adjusted size for larger title */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    animation: bounceIn 1s ease-in-out;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+.hero .btn-warning {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    transition: all 0.3s ease;
+}
+
+.hero .btn-warning:hover {
+    background-color: #563d7c;
+    border-color: #563d7c;
+}
+
+/* Slider styles */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%; /* 100% for each of the 3 slides */
+    height: 100%;
+    display: flex;
+    z-index: 2; /* Keeps slider below text */
+    overflow: hidden; /* Prevents content from overflowing */
+}
+
+.hero-slider .slide {
+    flex: 0 0 33.33%; /* Each slide takes up 1/3 of the total width */
+    background-size: cover; /* Ensures the images cover the entire section */
+    background-position: center center; /* Ensures images are centered */
+    transition: transform 1s ease-in-out;
+    height: 100%;
+}
+
+/* Mobile and Desktop View */
+@media (max-width: 768px) {
+    .hero {
+        background-image: url('image/tr.jpg'); /* Single background image for mobile */
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: scroll; /* Background attachment set to scroll on mobile */
+        height: 100vh; /* Ensure full viewport height on mobile */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem; /* Adjust title size for smaller screens */
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-slider {
+        animation: slideImagesMobile 9s infinite; /* Separate keyframes for mobile */
+    }
+}
+
+/* Desktop-specific adjustments for the slider */
+@media (min-width: 769px) {
+    .hero-slider {
+        animation: slideImages 9s infinite;
+    }
+}
+
+/* Keyframes for desktop slider animation */
+@keyframes slideImages {
+    0% { transform: translateX(0); }
+    33.33% { transform: translateX(-33.33%); } /* Second image */
+    66.66% { transform: translateX(-66.66%); } /* Third image */
+    100% { transform: translateX(0); } /* Back to first image */
+}
+
+/* Keyframes for mobile slider animation */
+@keyframes slideImagesMobile {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-100%); } /* Second image */
+    100% { transform: translateX(-200%); } /* Third image */
+}
+
+/* Animation for fadeIn and bounceIn */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: translateY(-2000px); opacity: 0; }
+    60% { transform: translateY(30px); opacity: 1; }
+    100% { transform: translateY(0); }
+}
+
+
+
+
+//
+.hero {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    overflow: hidden; /* Prevents unwanted scrolling */
+}
+
+/* Hero Image Styling */
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the container proportionally */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Sends the image behind the content */
+}
+
+/* Content Styling */
+.content {
+    z-index: 2; /* Ensures content appears above the image */
+}
+
+.content h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Improves readability */
+}
+
+.content p {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.btn-warning {
+    background-color: #6f42c1;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #563d7c;
+}
+
+/* Mobile-Specific Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh; /* Adjust height for smaller screens */
+        width: 350px;
+
+        left:10%;
+        top:10%;
+        right:10%;
+        object-fit: cover;
+    }
+
+    .content h1 {
+        font-size: 1.8rem; /* Reduce heading size */
+    }
+
+    .content p {
+        font-size: 0.95rem;
+    }
+
+    .btn-warning {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+}
