@@ -72,11 +72,8 @@ and SEO optimization** to ensure both aesthetics and performance.
 
 -   🌙 **Dark Mode Support** for better accessibility\
 -   🛒 **E-Commerce Integration** (shopping cart & checkout flow)\
--   📧 **Backend Integration** for storing and managing contact form
-    data\
 -   📊 **Analytics Dashboard** to track customer engagement and
     conversions\
--   🔒 **User Authentication System** (login/signup for customers)\
 -   🏷️ **Product Filtering & Sorting** for easier browsing\
 -   📦 **Order Tracking Feature** for customers after purchase
 
@@ -92,3 +89,4 @@ and SEO optimization** to ensure both aesthetics and performance.
 ## 📜 License
 
 This project is **open-source** and available under the **MIT License**.
+
